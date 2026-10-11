@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+#
+# Rebuilds the static site into dist/ before a push, and blocks the push if
+# the build produced changes that have not been committed. The push only
+# sends existing commits, so a fresh build has to be committed first.
+
+set -euo pipefail
+
+root="$(git rev-parse --show-toplevel)"
+cd "$root"
+
+echo "pre-push: exporting static site..."
+
+# The dependencies need PHP 8.4+, so fall back to the php_84 container when
+# the host PHP is older.
+if php -r 'exit(PHP_VERSION_ID >= 80400 ? 0 : 1);' >/dev/null 2>&1; then
+    php artisan export
+else
+    docker exec -u "$(id -u):$(id -g)" -w "$root" php_84 php artisan export
+fi
+
+if [ -n "$(git status --porcelain -- dist)" ]; then
+    echo
+    echo "pre-push: dist/ changed after the export. Commit it, then push again:"
+    git status --short -- dist
+    exit 1
+fi
+
+echo "pre-push: dist/ is up to date."

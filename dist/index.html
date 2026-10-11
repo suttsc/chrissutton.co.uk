@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth antialiased">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSINCiAgICAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4NCjxyZWN0IHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgcng9IjQiIGZpbGw9IiM2QjQ2QzEiLz4NCjxwYXRoIGQ9Ik05IDZMNCAxMkw5IDE4IiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPg0KPHBhdGggZD0iTTE1IDZMMjAgMTJMMTUgMTgiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+DQo8L3N2Zz4=" type="image/svg+xml">
+
+
+        <title>Chris Sutton - PHP / Laravel Developer</title>
+
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@100;300;600&display=swap" rel="stylesheet">
+
+        <!-- Styles -->
+        
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+                theme: {
+                    container: {
+                        center: true,
+                        padding: '1rem',
+                    },
+                },
+            }
+        </script>
+        <style>
+            html {
+                height: 100%;
+                overflow-x: hidden;
+            }
+            body {
+                height: 100%;
+                background: #101010 url("/bg.png") repeat;
+
+                font-family: 'Epilogue', sans-serif;
+            }
+            @keyframes l2r {
+                from {
+                    left: -50vw;
+                }
+                to {
+                    left: 150vw;
+                }
+            }
+            @keyframes r2l {
+                from {
+                    right: -50vw;
+                }
+                to {
+                    right: 150vw;
+                }
+            }
+        </style>
+
+    </head>
+    <body class="antialiased text-gray-100">
+        <div class="fixed inset-0  -z-10">
+    <div id="background-container" class="absolute inset-0  overflow-hidden">
+    </div>
+    <div class="backdrop-blur absolute inset-0 opacity-50"
+        style="background: linear-gradient(45deg, rgb(0 0 0) 0%, rgb(42 34 111) 100%);"
+    ></div>
+</div>
+<script>
+    const sizes = [2, 4, 8, 16, 32, 16];
+    const directions = ['l2r', 'r2l'];
+    const container = document.getElementById('background-container');
+
+    sizes.forEach((size, i) => {
+        const div = document.createElement('div');
+        const delay = Math.floor(Math.random() * 30);
+        const speed = Math.floor(Math.random() * 20) + 20;
+        const dir = directions[Math.floor(Math.random() * 2)];
+        const y = ((90 / sizes.length) * i) + 5;
+        const color = '#' + (Math.floor(Math.random() * 16)).toString(16).repeat(3);
+
+        div.classList.add('absolute', `w-${size}`, `h-${size}`, 'opacity-20');
+        div.style[dir === 'l2r' ? 'left' : 'right'] = '-50vw';
+        div.style.top = `${y}vh`;
+        div.style.animation = `${dir} ${speed}s linear ${delay}s infinite`;
+        div.style.backgroundColor = color;
+
+        container.appendChild(div);
+    });
+
+</script>
+
+        <div class="min-h-full flex flex-col">
+            <div class="">
+                 <div class="container">
+    
+    
+</div>
+
+             </div>
+            <div class="flex-auto flex justify-center items-center h-full">
+                <div class="container">
+                
+                </div>
+            </div>
+            <div class="">
+                 <div class="container">
+    <div class="my-4 py-4 border-b max-w-4xl mx-auto">
+        <div class="flex gap-4 items-center">
+            <div class="w-6 h-6 bg-white"></div>
+            <div class=""><span class="font-semibold">chris</span><span class="font-thin">sutton.co.uk</span></div>
+        </div>
+    </div>
+</div>
+             </div>
+        </div>
+    </body>
+</html>
